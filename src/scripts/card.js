@@ -4,7 +4,8 @@ export const createCard = function (data, { onDeleteCard, onLikeCard, onPreviewI
   const deleteButton = cardElement.querySelector('.card__delete-button');
   const likeButton = cardElement.querySelector('.card__like-button');
   const cardImage = cardElement.querySelector('.card__image');
-  cardElement.querySelector('.card__image').src = data.link;
+  cardImage.src = data.link;
+  cardImage.alt = data.name
   cardElement.querySelector('.card__title').textContent = data.name;
   likeButton.addEventListener('click', onLikeCard);
   deleteButton.addEventListener('click', onDeleteCard);

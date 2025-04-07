@@ -21,7 +21,7 @@ export const setCloseModal = (modal) => {
     closeModal(modal);
   });
 
-  modal.addEventListener('click', (evt) => {
+  modal.addEventListener('mousedown', (evt) => {
     if (evt.target.classList.contains('popup')) {
       closeModal(modal);
     }

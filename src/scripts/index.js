@@ -49,7 +49,7 @@ const newCardFormSubmit = (evt) => {
     onDeleteCard: deleteCard
   }));
   closeModal(newCardModal);
-  newCardForm.reset
+  newCardForm.reset();
 };
 
 newCardForm.addEventListener('submit', newCardFormSubmit);
