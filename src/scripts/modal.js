@@ -1,5 +1,3 @@
-import { disableSubmitButton } from "./validation.js";
-
 export const openModal = (modal) => {
   modal.classList.add('popup_is-opened');
   document.addEventListener('keydown', handleEscape);

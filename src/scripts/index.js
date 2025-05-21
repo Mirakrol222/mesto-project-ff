@@ -4,47 +4,18 @@ import { handleLikeCardClick, handledDeleteCardClick, createCard } from './card.
 import { getCardList, addCard, removeCard, setUserInfo, setUserAvatar, getUserInfo } from "./api.js";
 import { clearValidation, enableValidation } from "./validation.js";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const formValidation = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: '.popup__input_type_error',
-  errorClass: '.popup__error_visible'
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
 };
-
-
-
-
-
 
 let userId = null;
 
-
 let submitFormConfirm = () => { };
-
 
 const cardList = document.querySelector('.places__list');
 
@@ -52,9 +23,7 @@ const profileModal = document.querySelector('.popup_type_edit');
 const profileForm = profileModal.querySelector('.popup__form');
 const profileTitleInput = profileForm.querySelector('.popup__input_type_name');
 const profileDescriptionInput = profileForm.querySelector('.popup__input_type_description');
-
 const profileSubmitButton = profileForm.querySelector('[type="submit"]');
-
 const profileTitle = document.querySelector('.profile__title');
 const profileAvatar = document.querySelector('.profile__image');
 const profileDescription = document.querySelector('.profile__description');
@@ -70,19 +39,14 @@ const newCardForm = newCardModal.querySelector('.popup__form');
 const newCardModalOpenButton = document.querySelector('.profile__add-button');
 const newCardNameInput = newCardForm.querySelector('.popup__input_type_card-name');
 const newCardLinkInput = newCardForm.querySelector('.popup__input_type_url');
-const cardSubmitButton = newCardForm.querySelector('[type="submit"]');
 
+const cardSubmitButton = newCardForm.querySelector('[type="submit"]');
 const cardDeleteModalWindow = document.querySelector('.popup_type_remove-card');
 const cardDeleteSubmitButton = cardDeleteModalWindow.querySelector('[type="submit"]');
 
 const imageModal = document.querySelector('.popup_type_image');
 const imageElement = imageModal.querySelector('.popup__image');
 const imageCaption = imageModal.querySelector('.popup__caption');
-
-
-
-
-
 
 cardDeleteModalWindow.addEventListener('submit', (evt) => {
   evt.preventDefault();
@@ -95,12 +59,6 @@ const previewImage = ({ name, link }) => {
   imageCaption.textContent = name;
   openModal(imageModal);
 };
-
-
-
-
-
-
 
 const handleDeleteCard = (cardId, cardElement) => {
   submitFormConfirm = () => {
@@ -139,16 +97,6 @@ const handleCardFormSubmit = (evt) => {
 };
 
 newCardForm.addEventListener('submit', handleCardFormSubmit);
-
-
-
-
-
-
-
-
-
-
 
 const handleProfileFormSubmit = (evt) => {
   evt.preventDefault();
@@ -192,15 +140,6 @@ const handleAvatarFormSubmit = (evt) => {
 
 avatarForm.addEventListener('submit', handleAvatarFormSubmit);
 
-
-
-
-
-
-
-
-
-
 profileModalOpenButton.addEventListener('click', () => {
   clearValidation(profileForm, formValidation);
   profileTitleInput.value = profileTitle.textContent;
@@ -212,17 +151,9 @@ newCardModalOpenButton.addEventListener('click', () => {
   openModal(newCardModal);
 });
 
-
-
-
-
-
 profileAvatar.addEventListener('click', () => {
   openModal(avatarFormModalWindow);
 });
-
-
-
 
 setCloseModal(profileModal);
 setCloseModal(newCardModal);
@@ -230,8 +161,7 @@ setCloseModal(imageModal);
 setCloseModal(avatarFormModalWindow);
 setCloseModal(cardDeleteModalWindow);
 
-
-//enableValidation(formValidation);
+enableValidation(formValidation);
 
 Promise.all([getCardList(), getUserInfo()])
   .then(([cards, userData]) => {
@@ -256,68 +186,3 @@ Promise.all([getCardList(), getUserInfo()])
   .catch((err) => {
     console.log(err);
   });
-
-/*
-
-  const config = {
-    baseUrl: 'https://nomoreparties.co/v1/cohort-mag-4',
-    headers: {
-      authorization: '80270577-247e-44bb-a274-1fb9efcb9899',
-      'Content-Type': 'application/json'
-    }
-  }
-
-const test = () => {
-  return fetch(`${config.baseUrl}/cards`, {
-    headers: config.headers
-  })
-    .then(res => {
-      if (res.ok) {
-        return console.log(res.json());
-      }
-      return Promise.reject(console.log(`Ошибка: ${res.status}`));
-    });
-};
-
-test();
-/*
-profileModalOpenButton.addEventListener('click', () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  openModal(profileModal);
-});
-
-/*const handleProfileFormSubmit = (evt) => {
-  evt.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  closeModal(profileModal);
-};
-
-
-
-const newCardFormSubmit = (evt) => {
-  evt.preventDefault();
-  cardList.prepend(createCard({
-    name: newCardNameInput.value,
-    link: newCardLinkInput.value
-  },{
-    onPreviewImage: previewImage,
-    onLikeCard: likeCard,
-    onDeleteCard: deleteCard
-  }));
-  closeModal(newCardModal);
-  newCardForm.reset();
-};
-
-
-newCardModalOpenButton.addEventListener('click', () => {
-  openModal(newCardModal);
-});
-
-
-
-initialCards.forEach((data) => {
-  cardList.append(createCard(data, { onPreviewImage: previewImage, onLikeCard: likeCard, onDeleteCard: deleteCard }));
-});
-*/

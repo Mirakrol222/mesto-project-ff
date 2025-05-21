@@ -1,21 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const showInputError = (formElement, inputElement, errorMessage, config) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(config.inputErrorClass);
@@ -81,22 +63,12 @@ const setEventListeners = (formElement, config) => {
   });
 };
 
-
-
-
-
-
 export const enableValidation = (config) => {
   const forms = Array.from(document.querySelectorAll(config.formSelector));
   forms.forEach((formElement) => {
     setEventListeners(formElement, config);
     });
 };
-
-
-
-
-
 
 export const clearValidation = (formElement, config) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
@@ -106,30 +78,3 @@ export const clearValidation = (formElement, config) => {
   });
   disableSubmitButton(buttonElement, config);
 };
-
-
-
-
-
-
-
-/*
-// включение валидации вызовом enableValidation
-// все настройки передаются при вызове
-
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-});
-
-
-// очистка ошибок валидации вызовом clearValidation
-
-clearValidation(profileForm, validationConfig);
-
-
-*/

@@ -1,11 +1,5 @@
 import { changeLikeCardStatus } from "./api.js";
 
-
-
-
-
-
-
 export const handleLikeCardClick = (cardId, likeButton, likesCount) => {
   const isLiked = likeButton.classList.contains('card__like-button_is-active');
   changeLikeCardStatus(cardId, !isLiked)
@@ -16,24 +10,9 @@ export const handleLikeCardClick = (cardId, likeButton, likesCount) => {
     .catch((err) => console.log(`Ошибка статуса лайка ${err}`));
 };
 
-
-
-
-
-
 export const handledDeleteCardClick = (cardElement) => {
   cardElement.remove();
 };
-
-
-
-
-
-
-
-
-
-
 
 export const createCard = function (data, { onDeleteCard, onLikeCard, onPreviewImage }, userId) {
   const cardTemplate = document.querySelector('#card-template').content;
@@ -49,9 +28,6 @@ export const createCard = function (data, { onDeleteCard, onLikeCard, onPreviewI
   if (isLiked) likeButton.classList.add('card__like-button_is-active');
   likesCount.textContent = data.likes.length;
 
-  
-  
-  
   if (data.owner._id === userId && onDeleteCard) {
     deleteButton.addEventListener('click', () => {
       onDeleteCard(data._id, cardElement);
@@ -72,22 +48,3 @@ export const createCard = function (data, { onDeleteCard, onLikeCard, onPreviewI
 
   return cardElement;
 };
-
-
-
-
-
-
-
-
-
-/*
-
-export function deleteCard(evt) {
-  evt.target.closest('.card').remove();
-};
-
-export function likeCard(evt) {
-  evt.target.classList.toggle('card__like-button_is-active');
-};
-*/
