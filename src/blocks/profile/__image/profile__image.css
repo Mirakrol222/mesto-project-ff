@@ -7,6 +7,13 @@
   background-size: cover;
   background-position: center;
   margin: 0 29px 0 0;
+  transition: 0.3s;
+}
+
+.profile__image:hover {
+  opacity: 0.6;
+  background: transparent url('../../../images/edit-icon.svg') cover center  no-repeat;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 740px) {
