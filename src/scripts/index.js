@@ -161,7 +161,7 @@ setCloseModal(imageModal);
 setCloseModal(avatarFormModalWindow);
 setCloseModal(cardDeleteModalWindow);
 
-enableValidation(formValidation);
+//enableValidation(formValidation);
 
 Promise.all([getCardList(), getUserInfo()])
   .then(([cards, userData]) => {
