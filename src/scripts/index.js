@@ -128,20 +128,20 @@ const handleAvatarFormSubmit = (evt) => {
   })
     .then((userData) => {
       profileAvatar.style.backgroungImage = `url(${userData.avatar})`;
+      closeModal(avatarFormModalWindow);
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
       avatarSubmitButton.textContent = 'Сохранить';
-      closeModal(avatarFormModalWindow);
     });
 }
 
 avatarForm.addEventListener('submit', handleAvatarFormSubmit);
 
 profileModalOpenButton.addEventListener('click', () => {
-  clearValidation(profileForm, formValidation);
+  //clearValidation(profileForm, formValidation);
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openModal(profileModal);
